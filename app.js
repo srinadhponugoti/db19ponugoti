@@ -3,12 +3,21 @@ var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
+var Animal = require("./models/animal"); 
+
+const connectionString =  
+process.env.MONGO_CON ;
+mongoose = require('mongoose'); 
+mongoose.connect(connectionString,  
+{useNewUrlParser: true, 
+useUnifiedTopology: true});
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 var animalRouter = require('./routes/animal');
 var addmodsRouter = require('./routes/addmods');
 var selectorRouter = require('./routes/selector');
+var resourceRouter = require('./routes/resource');
 
 
 var app = express();
@@ -28,6 +37,7 @@ app.use('/users', usersRouter);
 app.use('/animal', animalRouter);
 app.use('/addmods', addmodsRouter);
 app.use('/selector', selectorRouter);
+app.use('/', resourceRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
@@ -44,5 +54,41 @@ app.use(function(err, req, res, next) {
   res.status(err.status || 500);
   res.render('error');
 });
+
+async function recreateDB(){ 
+  // Delete everything 
+  await Animal.deleteMany(); 
+ 
+  let instance1 = new Animal({
+    animal_name:"monkey", 
+    type:'nonwild', 
+    color:"brown"
+  }); 
+  let instance2 = new Animal({
+    animal_name:"elephant", 
+    type:'nonwild', 
+    color:"black"
+  }); 
+  let instance3 = new Animal({
+    animal_name:"tiger", 
+    type:'wild', 
+    color:"yellow"
+  }); 
+  instance1.save( function(err,doc) { 
+      if(err) return console.error(err); 
+      console.log("First object saved") 
+  }); 
+  instance2.save( function(err,doc) { 
+    if(err) return console.error(err); 
+    console.log("second object saved") 
+}); 
+instance3.save( function(err,doc) { 
+  if(err) return console.error(err); 
+  console.log("third object saved") 
+}); 
+} 
+ 
+let reseed = true; 
+if (reseed) { recreateDB();}
 
 module.exports = app;
