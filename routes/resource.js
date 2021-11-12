@@ -13,19 +13,19 @@ router.get('/resource', api_controller.api);
 /// animal ROUTES /// 
  
 // POST request for creating a animal.  
-router.post('/resource/animals', animal_controller.animal_create_post); 
+router.post('/resource/animal', animal_controller.animal_create_post); 
  
 // DELETE request to delete animal. 
-router.delete('/resource/animals/:id', animal_controller.animal_delete); 
+router.delete('/resource/animal/:id', animal_controller.animal_delete); 
  
 // PUT request to update animal. 
-router.put('/resource/animals/:id', 
+router.put('/resource/animal/:id', 
 animal_controller.animal_update_put); 
  
 // GET request for one animal. 
-router.get('/resource/animals/:id', animal_controller.animal_detail); 
+router.get('/resource/animal/:id', animal_controller.animal_detail); 
  
 // GET request for list of all animal items. 
-router.get('/resource/animals', animal_controller.animal_list); 
+router.get('/resource/animal', animal_controller.animal_list); 
  
 module.exports = router;
