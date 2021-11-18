@@ -1,6 +1,6 @@
 const mongoose = require("mongoose") 
 const animalSchema = mongoose.Schema({ 
- animal_name: String, 
+ name: String, 
  type: String, 
  color: String 
 }) 

@@ -60,17 +60,17 @@ async function recreateDB(){
   await Animal.deleteMany(); 
  
   let instance1 = new Animal({
-    animal_name:"monkey", 
+    name:"monkey", 
     type:'nonwild', 
     color:"brown"
   }); 
   let instance2 = new Animal({
-    animal_name:"elephant", 
+    name:"elephant", 
     type:'nonwild', 
     color:"black"
   }); 
   let instance3 = new Animal({
-    animal_name:"tiger", 
+    name:"tiger", 
     type:'wild', 
     color:"yellow"
   }); 

@@ -6,3 +6,22 @@ body {
 a {
   color: #00B7FF;
 }
+.animalAttr{
+  background-color: aquamarine;
+  width: 120px;
+}
+.col-sm-3{
+  color: darkgray;
+} 
+.col-sm-9{
+  color: sandybrown;
+}
+#name{
+  width: 35%;
+}
+#type{
+  width: 35%;
+}
+#color{
+  width: 35%;
+}
