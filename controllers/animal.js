@@ -25,8 +25,16 @@ exports.animal_create_post = async function(req, res) {
     document.color = req.body.color;
     console.log(req.body);
     try {
-      let result = await document.save();
-      res.send(result);
+        if(document.name.length<=0){
+            throw new TypeError("Name is Empty")
+          }
+          else if(document.type.length<=0){
+            throw new TypeError("Type is Empty")
+          }
+          else{
+            let result = await document.save();
+            res.send(result);
+          }
     } catch (err) {
       res.status(500);
       res.send(`{"error": ${err}}`);
