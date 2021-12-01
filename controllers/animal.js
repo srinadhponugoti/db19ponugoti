@@ -30,7 +30,7 @@ exports.animal_create_post = async function(req, res) {
           }
           else if(document.type.length<=0){
             throw new TypeError("Type is Empty")
-          }
+          }          
           else{
             let result = await document.save();
             res.send(result);
