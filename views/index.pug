@@ -14,13 +14,12 @@ block content
         integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF",
         crossorigin="anonymous")
   p Welcome to #{title}
-  p Working on Express using Heroku
-  button(type="button" class="btn btn-primary",onclick="update()") Press Me
-  div(id="target") Display
-  a(href = '/animal') animal Page link
-  script. 
-    let client_count = 0;
-    function update() {
-      client_count = client_count + 1;
-      document.getElementById("target").innerHTML = `Value now ${client_count}`  ;
-      }
+  if (!user) 
+    a(href="/login") Login 
+    br 
+    a(href="/register") Register 
+  if (user) 
+    p You are currently logged in as #{user.username} 
+    a(href="/animal") Take me to Animal 
+    br 
+    a(href="/logout") Logout
